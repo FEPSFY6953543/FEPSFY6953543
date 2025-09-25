@@ -1,10 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>3D Canary — Image Viewer</title>
+  <style>
+    :root{
+      --bg1: #f7fbff;
+      --bg2: #fffefb;
+      --card: #ffffff;
+      --accent: #ffd700;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#111;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-<html>
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:48px 20px;
+      box-sizing:border-box;
+    }
 
-  <head>
-    <h2><h2>
-  <head>
-    <img src="3d-canary-bird-sitting-upright-bright-yellow-feathers-with-subtle-shadows-transparent-png_419317445.htm" alt="Banner" width="1200" height="300">
+    .card{
+      max-width:900px;
+      width:100%;
+      background:var(--card);
+      border-radius:14px;
+      box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+      padding:28px;
+      text-align:center;
+    }
 
-<html>    
+    .img-wrap{
+      display:inline-block;
+      background: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0 6px, rgba(0,0,0,0) 6px 12px);
+      padding:24px;
+      border-radius:12px;
+    }
+
+    img.displayed {
+      display:block;
+      max-width:100%;
+      height:auto;
+      width:auto;
+      max-height:60vh;
+      filter: none;
+      box-shadow: 0 8px 30px rgba(16,24,40,0.12);
+      border-radius:10px;
+      image-rendering: -webkit-optimize-contrast;
+      background: transparent;
+    }
+
+    .caption{
+      margin-top:14px;
+      font-size:14px;
+      color:#333;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .filename{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+      font-size:13px;
+      color:#666;
+      padding:6px 10px;
+      border-radius:8px;
+      background:#f6f7f8;
+      border:1px solid rgba(16,24,40,0.04);
+    }
+
+    .actions a{
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      background: linear-gradient(180deg,var(--accent), #f0b800);
+      color:#111;
+      font-weight:600;
+      box-shadow: 0 6px 18px rgba(255,184,0,0.18);
+    }
+
+    @media (max-width:420px){
+      .card{ padding:18px; }
+      .img-wrap{ padding:14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="main" aria-labelledby="title">
+      <h1 id="title" style="margin:0 0 12px;font-size:20px;">3D Canary — Viewer</h1>
+
+      <!-- If your image file is really an image, put its filename below.
+           If it is actually a PNG, change the extension to .png (example: ...419317445.png) -->
+      <div class="img-wrap" aria-hidden="false">
+        <img
+          class="displayed"
+          src="./3d-canary-bird-sitting-upright-bright-yellow-feathers-with-subtle-shadows-transparent-png_419317445.htm"
+          alt="3D canary bird — bright yellow feathers, sitting upright (transparent background)"
+          loading="lazy"
+          onerror="this.onerror=null; this.src='placeholder-image-missing.png';"
+        />
+      </div>
+
+      <div class="caption" style="margin-top:16px;">
+        <div class="filename">3d-canary-bird-sitting-upright-bright-yellow-feathers-with-subtle-shadows-transparent-png_419317445.htm</div>
+        <div class="actions">
+          <!-- Download link will try to download the same filename -->
+          <a href="./3d-canary-bird-sitting-upright-bright-yellow-feathers-with-subtle-shadows-transparent-png_419317445.htm" download>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <p style="margin-top:12px;color:#666;font-size:13px;">
+        Tip: if nothing appears, the file might not be an image or may live in a different folder — try changing the `src` to the actual path (for example `images/…419317445.png`).
+      </p>
+    </div>
+  </div>
+</body>
+</html>
