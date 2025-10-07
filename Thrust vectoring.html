@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrust Vectoring</title>
+    <link rel ="stylesheet" href="styles.css">
+    <meta name="description" content="Learn about thrust vectoring technology used in aircraft and spacecraft.">
+
+</head>
+<body>
+    <main>
+        <h1>What is thrust vectoring?</h1>
+        <p>In flight, there are four forces acting on an aircraft: lift, weight, thrust, and drag. Depending on the size, design and specifications of an aircraft, these forces come in different magnitudes.
+            Lift and thrust are considered to be positive forces that act upwards and forwards respectively, while weight and drag are negative forces that act downwards and backwards respectively.
+            In cruising flight (where an aircraft is neither accelerating nor decelerating), these four forces are balanced out, leading to steady flight. However, when these forces become imbalanced i.e when you have too much weight and too little lift, this makes maneuvering an aircraft conventionally far more difficult.
+            This is where thrust vectoring comes in. Thrust vectoring is the ability to direct the thrust from an engine in a direction other than parallel to the vehicle's longitudinal axis. This is usually done by mechanically altering the angle of the engine's exhaust nozzle.
+            By redirecting the thrust, an aircraft can generate additional lift or control forces, allowing for improved maneuverability, especially at low speeds or, like previously mentioned, when the other forces are imbalanced.
+            <button onclick="toggleSources()">Show Sources</button>
+        </p>
+        <ul id="sources-list" style="display:none; margin-top:10px;">
+            <li><a href="https://ntrs.nasa.gov/api/citations/19710016808/downloads/19710016808.pdf" target="_blank">NASA: Thrust Vectoring Technology</a></li>
+            <li><a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/vectored-thrust/" target="_blank">NASA: What is Thrust Vectoring?</a></li>
+        </ul>
+            <img src="thrust-vectoring.jpg" alt="Diagram of thrust vectoring" style="max-width: 100%; height: auto; display: block; margin: 20px auto;">
+            <h2>Applications of thrust vectoring</h2>   
+            <p>Thrust vectoring is used in various applications, including military aircraft, where it enables advanced maneuvers and improved dogfighting capabilities. It is also being explored in the design of next-generation commercial aircraft to enhance safety and performance. One of the first aircraft to go into production that used this technology was the Harrier Jump Jet, which employed thrust vectoring to achieve vertical takeoff and landing.
+                The Harrier was developed by Hawker Siddeley, beginning in the late 1950s and early 1960s. The first prototype, the Hawker P.1127, made its maiden flight in 1960. The first operational version, the Harrier GR.1, entered service with the Royal Air Force in 1969. The primary design goal of the Harrier was to create a versatile aircraft capable of operating from short or improvised runways, as well as from aircraft carriers, without the need for catapults or arrestor wires.
+                All of this was enabled by the powerful Rolls-Royce Pegasus turbofan engine, which featured four swiveling nozzles that could direct thrust downward for vertical takeoff and landing or rearward for conventional flight. This unique capability allowed the Harrier to perform a variety of roles, including ground attack, reconnaissance, and air defense. This is the first operational use of using vectored thrust to combat the 'Negative forces' of flight as mentioned earlier.
+            </p>
+            
+        </main>
+        <script>
+            function showMoreInfo() {
+                const info = document.getElementById('more-info');
+                if (info.style.display === 'block') {
+                    info.style.display = 'none';
+                } else {
+                    info.style.display = 'block';
+                }
+            }
+            function toggleSources() {
+                const sources = document.getElementById('sources-list');
+                if (sources.style.display === 'block') {
+                    sources.style.display = 'none';
+                } else {
+                    sources.style.display = 'block';
+                }
+            }
+        </script>
+    </body>
+    </html>
