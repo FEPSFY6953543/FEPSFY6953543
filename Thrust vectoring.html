@@ -1,52 +1,243 @@
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thrust Vectoring</title>
-    <link rel ="stylesheet" href="styles.css">
-    <meta name="description" content="Learn about thrust vectoring technology used in aircraft and spacecraft.">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thrust Vectoring</title>
+  <meta name="description" content="Learn about thrust vectoring technology used in aircraft and spacecraft.">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main>
+  <img src="WebBanner2023.png" alt="Logo" class="logo-img">
+
+  <main class="content-shell">
+    <section class="content">
+
+      <div id="Introduction_InText" class="content-section">
         <h1>What is thrust vectoring?</h1>
-        <p>In flight, there are four forces acting on an aircraft: lift, weight, thrust, and drag. Depending on the size, design and specifications of an aircraft, these forces come in different magnitudes.
-            Lift and thrust are considered to be positive forces that act upwards and forwards respectively, while weight and drag are negative forces that act downwards and backwards respectively.
-            In cruising flight (where an aircraft is neither accelerating nor decelerating), these four forces are balanced out, leading to steady flight. However, when these forces become imbalanced i.e when you have too much weight and too little lift, this makes maneuvering an aircraft conventionally far more difficult.
-            This is where thrust vectoring comes in. Thrust vectoring is the ability to direct the thrust from an engine in a direction other than parallel to the vehicle's longitudinal axis. This is usually done by mechanically altering the angle of the engine's exhaust nozzle.
-            By redirecting the thrust, an aircraft can generate additional lift or control forces, allowing for improved maneuverability, especially at low speeds or, like previously mentioned, when the other forces are imbalanced.
-            <button onclick="toggleSources()">Show Sources</button>
+        <p>
+          In flight, there are four forces acting on an aircraft: lift, weight, thrust, and drag. Depending on the size, design and specifications of an aircraft, these forces come in different magnitudes.
+          Lift and thrust are considered to be positive forces that act upwards and forwards respectively, while weight and drag are negative forces that act downwards and backwards respectively.
+          In cruising flight (where an aircraft is neither accelerating nor decelerating), these four forces are balanced out, leading to steady flight. However, when these forces become imbalanced i.e when you have too much weight and too little lift, this makes maneuvering an aircraft conventionally far more difficult.
+          This is where thrust vectoring comes in. Thrust vectoring is the ability to direct the thrust from an engine in a direction other than parallel to the vehicle's longitudinal axis. This is usually done by mechanically altering the angle of the engine's exhaust nozzle.
+          By redirecting the thrust, an aircraft can generate additional lift or control forces, allowing for improved maneuverability, especially at low speeds or, like previously mentioned, when the other forces are imbalanced. Below is a diagram showing how thrust vectoring works:
         </p>
-        <ul id="sources-list" style="display:none; margin-top:10px;">
-            <li><a href="https://ntrs.nasa.gov/api/citations/19710016808/downloads/19710016808.pdf" target="_blank">NASA: Thrust Vectoring Technology</a></li>
-            <li><a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/vectored-thrust/" target="_blank">NASA: What is Thrust Vectoring?</a></li>
+
+        <p class="sources-panel">
+          <button type="button" class="toggle-sources" aria-expanded="false" aria-controls="sources-list-1">
+            Show Sources
+          </button>
+        </p>
+        <ul id="sources-list-1" class="sources-list" hidden>
+          <li>
+            <a href="https://ntrs.nasa.gov/api/citations/19710016808/downloads/19710016808.pdf" target="_blank" rel="noopener">
+              NASA: Thrust Vectoring Technology
+            </a>
+          </li>
+          <li>
+            <a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/vectored-thrust/" target="_blank" rel="noopener">
+              NASA: What is Thrust Vectoring?
+            </a>
+          </li>
         </ul>
-            <img src="thrust-vectoring.jpg" alt="Diagram of thrust vectoring" style="max-width: 100%; height: auto; display: block; margin: 20px auto;">
-            <h2>Applications of thrust vectoring</h2>   
-            <p>Thrust vectoring is used in various applications, including military aircraft, where it enables advanced maneuvers and improved dogfighting capabilities. It is also being explored in the design of next-generation commercial aircraft to enhance safety and performance. One of the first aircraft to go into production that used this technology was the Harrier Jump Jet, which employed thrust vectoring to achieve vertical takeoff and landing.
-                The Harrier was developed by Hawker Siddeley, beginning in the late 1950s and early 1960s. The first prototype, the Hawker P.1127, made its maiden flight in 1960. The first operational version, the Harrier GR.1, entered service with the Royal Air Force in 1969. The primary design goal of the Harrier was to create a versatile aircraft capable of operating from short or improvised runways, as well as from aircraft carriers, without the need for catapults or arrestor wires.
-                All of this was enabled by the powerful Rolls-Royce Pegasus turbofan engine, which featured four swiveling nozzles that could direct thrust downward for vertical takeoff and landing or rearward for conventional flight. This unique capability allowed the Harrier to perform a variety of roles, including ground attack, reconnaissance, and air defense. This is the first operational use of using vectored thrust to combat the 'Negative forces' of flight as mentioned earlier.
-            </p>
-            
-        </main>
-        <script>
-            function showMoreInfo() {
-                const info = document.getElementById('more-info');
-                if (info.style.display === 'block') {
-                    info.style.display = 'none';
-                } else {
-                    info.style.display = 'block';
-                }
-            }
-            function toggleSources() {
-                const sources = document.getElementById('sources-list');
-                if (sources.style.display === 'block') {
-                    sources.style.display = 'none';
-                } else {
-                    sources.style.display = 'block';
-                }
-            }
-        </script>
-    </body>
-    </html>
+
+        <figure class="content-figure">
+          <img src="thrust-vectoring.jpg" alt="Diagram of thrust vectoring" class="content-image">
+          <figcaption>Basic principle of redirecting exhaust to produce control forces.</figcaption>
+        </figure>
+
+        <p class="sources-panel">
+          <button type="button" class="toggle-sources" aria-expanded="false" aria-controls="sources-list-4">
+            Show Sources
+          </button>
+        </p>
+        <ul id="sources-list-4" class="sources-list" hidden>
+          <li>
+            <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcJjh9KbhzFgGgFH3hq-cpTm02fCpcerYt1w&s" target="_blank" rel="noopener">
+              Aerospace Notes: Thrust vector control
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div id="Analysis_InText" class="content-section">
+        <h2>The Harrier Jump-Jet</h2>
+        <p>
+          Thrust vectoring is used in various applications, including military aircraft, where it enables advanced maneuvers and improved dogfighting capabilities. It is also being explored in the design of next-generation commercial aircraft to enhance safety and performance. One of the first aircraft to go into production that used this technology was the Harrier Jump Jet, which employed thrust vectoring to achieve vertical takeoff and landing.
+          The Harrier was developed by Hawker Siddeley, beginning in the late 1950s and early 1960s. The first prototype, the Hawker P.1127, made its maiden flight in 1960. The first operational version, the Harrier GR.1, entered service with the Royal Air Force in 1969. The primary design goal of the Harrier was to create a versatile aircraft capable of operating from short or improvised runways, as well as from aircraft carriers, without the need for catapults or arrestor wires.
+          All of this was enabled by the powerful Rolls-Royce Pegasus turbofan engine, which featured four swiveling nozzles that could direct thrust downward for vertical takeoff and landing or rearward for conventional flight. This unique capability allowed the Harrier to perform a variety of roles, including ground attack, reconnaissance, and air defense, making the Harrier the first operational usage of vectored thrust to combat the ‘negative forces’ of flight as mentioned earlier. Below is an image of a Harrier GR1 on display on a runway:
+        </p>
+
+        <p class="sources-panel">
+          <button type="button" class="toggle-sources" aria-expanded="false" aria-controls="sources-list-2">
+            Show Sources
+          </button>
+        </p>
+        <ul id="sources-list-2" class="sources-list" hidden>
+          <li>
+            <a href="https://avi-8.co.uk/blogs/the-aviation-journal/harrier-jump-jet-the-revolutionary-aircraft-that-changed-aerial-warfare?srsltid=AfmBOopd53ivsSnMdTi5_lY61qMb3VS7OeuXaW2B0xB5tk2K3FI7WL5t&shpxid=a7d4b7df-4472-4c26-bef5-f40c8eb603aa" target="_blank" rel="noopener">
+              AVI-8: Harrier Jump Jet - The Revolutionary Aircraft that Changed Aerial Warfare
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flightglobal.com/flight-international/harrier-the-worlds-first-vstol-fighter/112447.article" target="_blank" rel="noopener">
+              Flight Global: Harrier - The World's First V/STOL Fighter
+            </a>
+          </li>
+        </ul>
+
+        <figure class="content-figure">
+          <img src="harrier-jump-jet.jpg" alt="Harrier GR1 on display on a runway" class="content-image">
+          <figcaption>Harrier GR1 demonstrating vectored-thrust VTOL capability.</figcaption>
+        </figure>
+
+        <p class="sources-panel">
+          <button type="button" class="toggle-sources" aria-expanded="false" aria-controls="sources-list-5">
+            Show Sources
+          </button>
+        </p>
+        <ul id="sources-list-5" class="sources-list" hidden>
+          <li>
+            <a href="https://commons.wikimedia.org/wiki/File:Hawker_Siddeley_Harrier_GR1,_UK_-_Air_Force_AN2256552.jpg" target="_blank" rel="noopener">
+              Wikimedia Commons: Harrier GR1
+            </a>
+          </li>
+        </ul>
+
+        <h3>The F-22 Raptor</h3>
+        <p>
+          Since the development of the Harrier, thrust vectoring in aeronautical design has advanced significantly. The next key operational utilisation of thrust vectoring was seen in the development of the F-22 Raptor, widely known for stealth but also a major step in vectoring.
+          The F-22 uses two-dimensional thrust-vectoring nozzles to enhance its manoeuvrability; when pitching up for high angles of attack (AoA), it can direct thrust to optimise aerodynamic performance, allowing tighter turns and improved control at high speeds. Its 1991–1997 development period integrated advanced flight-control systems that work in tandem with the vectoring nozzles, evolving the technology pioneered with the Harrier.
+          The exhaust nozzles can deflect up to 20° in the vertical plane, increasing manoeuvrability significantly over conventional methods.
+        </p>
+
+        <p class="media-actions">
+          <a href="https://www.youtube.com/watch?v=wdLVZDNPdfQ" target="_blank" rel="noopener" class="video-button">F-22 thrust vectoring demo</a>
+        </p>
+
+        <p class="sources-panel">
+          <button type="button" class="toggle-sources" aria-expanded="false" aria-controls="sources-list-3">
+            Show Sources
+          </button>
+        </p>
+        <ul id="sources-list-3" class="sources-list" hidden>
+          <li>
+            <a href="https://avi-8.co.uk/blogs/the-aviation-journal/the-f-22-raptor-the-worlds-most-advanced-stealth-fighter?srsltid=AfmBOooI4i5jtyMBZ8Exh9bavr-we2WSAQjLXu0U58U0b7FWYgba4x-9&shpxid=b06436c0-976e-4f9f-9b5d-716efcb4ab71" target="_blank" rel="noopener">
+              AVI-8: The F-22 Raptor – The World’s Most Advanced Stealth Fighter
+            </a>
+          </li>
+          <li>
+            <a href="https://simpleflying.com/how-the-f-22-raptors-thrust-vectoring-nozzles-work/" target="_blank" rel="noopener">
+              Simple Flying: How the F-22 Raptor’s Thrust-Vectoring Nozzles Work
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="meta">
+        <div id="last-updated" class="status-message">Loading last update time...</div>
+        <p id="totalWordCount" class="word-count"></p>
+      </div>
+
+      <div class="center-button">
+        <button type="button" class="primary-button" id="verify-btn">Verify Last Modified Time</button>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    // --- Word Count Helpers ---
+    function getWordCountOf(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (!section) return 0;
+      const text = section.textContent || "";
+      const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+      return words.length;
+    }
+
+    function updateTotalWordCount() {
+      const intro = getWordCountOf("Introduction_InText");
+      const analysis = getWordCountOf("Analysis_InText");
+      const total = intro + analysis;
+      const out = document.getElementById("totalWordCount");
+      if (out) out.textContent = `Total word count: ${total}`;
+    }
+
+    // --- GitHub Last Updated ---
+    async function getLastUpdatedTime() {
+      const username = "nr0025";
+      const repo = "FY0025";
+      const filePath = "HTML/Thrust vectoring.html"; // update if your repo path differs
+
+      const url = `https://api.github.com/repos/${username}/${repo}/commits?path=${encodeURIComponent(filePath)}`;
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: { "Accept": "application/vnd.github.v3+json" }
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
+        }
+
+        const commits = await response.json();
+        const el = document.getElementById("last-updated");
+        if (Array.isArray(commits) && commits.length > 0) {
+          const lastCommitDate = new Date(commits[0].commit.committer.date);
+          el.textContent = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+        } else {
+          el.textContent = "No commits found for this file.";
+        }
+      } catch (err) {
+        console.error("Error fetching the last updated time:", err);
+        const el = document.getElementById("last-updated");
+        if (el) el.textContent = "Error fetching update time. Please check the repository details.";
+      }
+    }
+
+    // --- Toggle Sources (accessible) ---
+    function toggleListVisibility(button, list) {
+      const expanded = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!expanded));
+      if (expanded) {
+        list.hidden = true;
+        list.classList.remove("is-visible");
+      } else {
+        list.hidden = false;
+        // allow the element to render before adding the animation class
+        requestAnimationFrame(() => list.classList.add("is-visible"));
+      }
+    }
+
+    function bindSourceToggles() {
+      document.querySelectorAll(".toggle-sources[aria-controls]").forEach(btn => {
+        const id = btn.getAttribute("aria-controls");
+        const list = document.getElementById(id);
+        if (!list) return;
+        btn.addEventListener("click", () => toggleListVisibility(btn, list));
+      });
+    }
+
+    // --- Verify Button ---
+    function bindVerifyButton() {
+      const btn = document.getElementById("verify-btn");
+      if (!btn) return;
+      btn.addEventListener("click", async () => {
+        const status = document.getElementById("last-updated");
+        if (status) status.textContent = "Verifying...";
+        await getLastUpdatedTime();
+        alert("Last modified time has been successfully verified from the GitHub API.");
+      });
+    }
+
+    // --- Initialize once ---
+    window.onload = function () {
+      getLastUpdatedTime();
+      updateTotalWordCount();
+      bindSourceToggles();
+      bindVerifyButton();
+    };
+  </script>
+</body>
+</html>
