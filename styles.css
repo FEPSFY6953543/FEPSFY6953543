@@ -13,7 +13,7 @@
 
 body {
   min-height: 100vh;
-  margin: 16px; /* fixed: had no unit before */
+  margin: 16px;
   font-family: 'Segoe UI', Arial, sans-serif;
   background: linear-gradient(135deg, rgba(227,234,252,0.9), rgba(197,202,233,0.9));
   color: var(--color-text);
@@ -30,7 +30,7 @@ a:hover { color: var(--color-primary-accent); }
 
 .logo-img {
   width: 180px;
-  height: auto;
+  height: 64px;
   display: block;
   margin: 12px auto 0;
   flex-shrink: 0;
@@ -54,7 +54,7 @@ a:hover { color: var(--color-primary-accent); }
 
 .content-section + .content-section { margin-top: 48px; }
 .content-section h2 {
-  font-size: 2rem;
+  font-size: 1.55rem;
   color: var(--color-primary);
   margin-bottom: 18px;
   letter-spacing: 0.03em;
@@ -63,7 +63,14 @@ a:hover { color: var(--color-primary-accent); }
   font-size: 1.55rem;
   margin-top: 36px;
   margin-bottom: 12px;
-  color: var(--color-muted);
+  color: var(--color-primary);
+}
+
+.content-section h4 {
+  font-size: 1.55rem;
+  margin-top: 36px;
+  margin-bottom: 12px;
+  color: var(--color-primary);
 }
 
 p { margin: 0 0 18px; font-size: 1.05rem; }
@@ -172,4 +179,11 @@ button:focus-visible, .primary-button:focus-visible, .video-button:focus-visible
   .content { padding: 28px 20px; }
   .content-section h2 { font-size: 1.6rem; }
   .content-section h3 { font-size: 1.35rem; }
+}
+
+.top-left-logo {
+  width: 130px;
+  height: auto;
+  display: block;
+  margin: 10px 0 20px 10px;
 }
