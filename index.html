@@ -183,7 +183,6 @@
 
     </section>
   </main>
-
   <script>
     function getWordCountOf(sectionId) {
       const section = document.getElementById(sectionId);
@@ -203,35 +202,24 @@
 
     function updateTotalWordCount() {
       const abstract = getWordCountOf("Abstract_InText");
-      const intro = getWordCountOf("Introduction_InText");
+      // You don't currently have an Introduction_InText section, so skip it
       const analysis = getWordCountOf("Analysis_InText");
-      const total = abstract + intro + analysis;
+      const total = abstract + analysis;
       const out = document.getElementById("totalWordCount");
       if (out) out.textContent = `Total word count: ${total}`;
     }
 
+    // For your use case, just hard-code the correct repo + file
     function loadGhSettings() {
-  let stored = {};
-  try { stored = JSON.parse(localStorage.getItem("ghSettings") || "{}"); } catch (e) {}
-  const defaults = {
-    owner: "nr0025",
-    repo: "FY0025",
-    path: "HTML/index.html",
-    branches: ["main", "master", "gh-pages"]
-  };
-  ...
-}
-      const branches = Array.isArray(stored.branches)
-        ? stored.branches
-        : (typeof stored.branches === "string" ? stored.branches.split(",") : defaults.branches);
       return {
-        owner: stored.owner || defaults.owner,
-        repo: stored.repo || defaults.repo,
-        path: stored.path || defaults.path,
-        branches: branches.map(s => String(s).trim()).filter(Boolean)
+        owner: "FEPSFY6953543",
+        repo: "FEPSFY6953543",
+        path: "index.html",   // index.html is at the repo root on GitHub
+        branches: ["main"]    // main is your active branch
       };
     }
 
+    // These functions are harmless even if you never add the settings UI
     function renderGhSettings() {
       const s = loadGhSettings();
       const owner = document.getElementById("gh-owner"); if (owner) owner.value = s.owner;
@@ -247,7 +235,7 @@
       const branchesStr = (document.getElementById("gh-branches")?.value || "").trim();
       const branches = branchesStr
         ? branchesStr.split(",").map(s => s.trim()).filter(Boolean)
-        : ["main", "master", "gh-pages"];
+        : ["main"];
       const settings = { owner, repo, path, branches };
       localStorage.setItem("ghSettings", JSON.stringify(settings));
       return settings;
@@ -267,7 +255,7 @@
       const { owner, repo, path, branches: branchesToTry } = loadGhSettings();
       const statusEl = document.getElementById("last-updated");
       const headers = { "Accept": "application/vnd.github.v3+json" };
-    
+
       async function branchHasPath(branch) {
         const contentsURL = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}?ref=${branch}`;
         const r = await fetch(contentsURL, { headers });
@@ -275,7 +263,7 @@
         if (r.status === 404) return false;
         return false;
       }
-    
+
       async function latestCommitOnBranch(branch) {
         const commitsURL = `https://api.github.com/repos/${owner}/${repo}/commits?path=${encodeURIComponent(path)}&sha=${branch}&per_page=1`;
         const r = await fetch(commitsURL, { headers });
@@ -284,15 +272,17 @@
         if (Array.isArray(data) && data.length > 0) return data[0];
         return null;
       }
-    
-           try {
+
+      try {
         for (const branch of branchesToTry) {
           const exists = await branchHasPath(branch);
           if (!exists) continue;
           const commit = await latestCommitOnBranch(branch);
           if (commit) {
             const lastCommitDate = new Date(commit.commit.committer.date);
-            statusEl.textContent = `Last Modified Time (branch: ${branch}): ${lastCommitDate.toLocaleString()}`;
+            if (statusEl) {
+              statusEl.textContent = `Last Modified Time (branch: ${branch}): ${lastCommitDate.toLocaleString()}`;
+            }
             return;
           }
         }
@@ -329,7 +319,6 @@
       });
     }
 
-    
     function bindVerifyButton() {
       const btn = document.getElementById("verify-btn");
       if (!btn) return;
@@ -352,5 +341,6 @@
       getLastUpdatedTime();
     });
   </script>
+  
 </body>
 </html>
