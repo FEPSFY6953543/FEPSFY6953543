@@ -211,14 +211,16 @@
     }
 
     function loadGhSettings() {
-      let stored = {};
-      try { stored = JSON.parse(localStorage.getItem("ghSettings") || "{}"); } catch (e) {}
-      const defaults = {
-        owner: "nr0025",
-        repo: "FY0025",
-        path: "HTML/index.html",
-        branches: ["main", "master", "gh-pages"]
-      };
+  let stored = {};
+  try { stored = JSON.parse(localStorage.getItem("ghSettings") || "{}"); } catch (e) {}
+  const defaults = {
+    owner: "nr0025",
+    repo: "FY0025",
+    path: "HTML/index.html",
+    branches: ["main", "master", "gh-pages"]
+  };
+  ...
+}
       const branches = Array.isArray(stored.branches)
         ? stored.branches
         : (typeof stored.branches === "string" ? stored.branches.split(",") : defaults.branches);
