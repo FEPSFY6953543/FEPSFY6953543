@@ -175,7 +175,7 @@
       <div class="meta">
         <div id="last-updated" class="status-message">Loading last update time...</div>
         <p id="totalWordCount" class="word-count"></p>
-      </div>
+        </div>
 
       <div class="center-button">
         <button type="button" class="primary-button" id="verify-btn">Verify Last Modified Time</button>
@@ -202,7 +202,6 @@
 
     function updateTotalWordCount() {
       const abstract = getWordCountOf("Abstract_InText");
-      // You don't currently have an Introduction_InText section, so skip it
       const analysis = getWordCountOf("Analysis_InText");
       const total = abstract + analysis;
       const out = document.getElementById("totalWordCount");
@@ -331,13 +330,13 @@
     }
 
     window.addEventListener("DOMContentLoaded", () => {
-      // Bind UI first so errors elsewhere don't break buttons
+    
       bindSourceToggles();
       renderGhSettings();
       bindGhSettings();
       bindVerifyButton();
       updateTotalWordCount();
-      // Fetch last updated time (non-blocking)
+      
       getLastUpdatedTime();
     });
   </script>
