@@ -73,6 +73,12 @@ a:hover { color: var(--color-primary-accent); }
   color: var(--color-primary);
 }
 
+.content-section h5 {
+  font-size: 1.55rem;
+  margin-top: 36px;
+  margin-bottom: 12px;
+  color: var(--color-primary);
+}
 p { margin: 0 0 18px; font-size: 1.05rem; }
 
 .content-figure {
