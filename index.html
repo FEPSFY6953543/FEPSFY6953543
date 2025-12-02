@@ -20,16 +20,26 @@
     <section class="content">
 
       <h1 class="page-title">Thrust Vectoring: What is it and how is it used?</h1>
+      <nav class="toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#harrier">The Harrier Jump-Jet</a></li>
+          <li><a href="#f22">The F-22 Raptor</a></li>
+          <li><a href="#future">The Future of Thrust Vectoring</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+        </ol>
+      </nav>
 
       <div id="Abstract_InText" class="content-section">
-        <h2>Abstract</h2>
+        <h2 id="abstract">Abstract</h2>
         <p>
           Thrust vectoring is a flight control technique whereby the direction of an engine’s exhaust is deliberately deflected to generate control moments or additional lift independent of conventional aerodynamic surfaces. This paper outlines the purpose and historical development of thrust vectoring and examines two landmark implementations: the Harrier family, which operationalised vectored thrust for vertical/short take-off and landing (V/STOL), and the F-22 Raptor, which employs two-dimensional pitch-vectoring nozzles to augment agility at high angles of attack and to expand the controllable flight envelope. The analysis highlights how engine-flow direction, in concert with fly-by-wire control laws and airframe design, can provide decisive handling qualities during times where aerodynamic control is ineffective. Furthermore, the paper continues into the future of thrust vectoring, focusing on emerging distributed electric propulsion (DEP) systems for drones, which promise enhanced manoeuvrability, safety, and control precision through multiple independently vectored thrust sources.
         </p>
       </div>
 
       <div id="Analysis_InText" class="content-section">
-        <h2>The Harrier Jump-Jet</h2>
+        <h2 id="harrier">The Harrier Jump-Jet</h2>
         <p>
           The Harrier programme transformed vectored thrust from experimental concept to robust operational capability. Originating with the P.1127 in 1960 and entering RAF service as the Harrier GR.1 in 1969, the design’s centrepiece was the Rolls-Royce Pegasus turbofan with four mechanically swivelling nozzles. These nozzles directed the combined core and bypass flow vertically for lift during take-off and landing, or aft for conventional forward flight, with intermediate angles enabling short or rolling departures and shipboard operations without catapults or arrestor gear. The resulting V/STOL flexibility supported areas in which it could be based, rapid sortie generation from un-ideal sites, and distinctive close-air-support profiles. From a control standpoint, vectored thrust provided authoritative low-speed handling and transition control that conventional aerodynamic surfaces could not, effectively creating lift and control moments from propulsive flow where wing-borne lift was insufficient. The Harrier thereby established the first sustained, large-scale operational use of thrust vectoring in a combat aircraft and demonstrated the strategic and tactical value of propulsion-based control.
           In fact, because it was so revolutionary, it was a massive export success for the UK, with the US Marine Corps adopting a variant as the AV-8B Harrier II, and several other nations procuring the type for their own air forces. The Harrier’s vectored-thrust system proved reliable and effective in diverse operational theatres, from the Falklands War to Gulf conflicts, validating the concept of thrust vectoring as a force multiplier in modern air combat.
@@ -71,7 +81,7 @@
           </li>
         </ul>
 
-        <h3>The F-22 Raptor</h3>
+        <h3 id="f22">The F-22 Raptor</h3>
         <p>
           The F-22 Raptor represents a distinct lineage of thrust vectoring aimed at agility and control augmentation rather than V/STOL. Its two-dimensional pitch-vectoring nozzles can deflect approximately ±20° in the vertical plane, generating direct pitch moments and enhancing control authority at high AoA where aerodynamic surfaces become less effective. Integrated with a full-authority, digital fly-by-wire system, the vectoring is harmonised with airframe aerodynamics to maintain stability and provide precise attitude control during aggressive manoeuvres and post-stall regimes. The Pratt & Whitney F119 engines supply a high thrust-to-weight ratio and enable supercruise, sustaining supersonic flight without afterburner; the combination of supercruise performance, vectoring-augmented control, and advanced sensor-fusion enhances energy management, nose-pointing capability, and overall tactical flexibility. In operational terms, two-dimensional vectoring offers a pragmatic balance of mechanical complexity, signature control, and benefit to pitch manoeuvrability, contributing to the Raptor’s reputation for superior handling and envelope expansion relative to non-vectoring contemporaries.
         </p>
@@ -98,7 +108,7 @@
           </li>
         </ul>
 
-        <h4>The Future of Thrust Vectoring:</h4>
+        <h4 id="future">The Future of Thrust Vectoring:</h4>
         <p>
           Distributed Electric Propulsion (DEP) drones are emerging as the most practical, scalable and cost-effective future development of thrust vectoring, offering a level of agility, safety, and control precision that traditional mechanical or fluidic systems cannot match.
           In DEP architectures, multiple electrically driven rotors are distributed across a drone’s wings or fuselage, each capable of independent thrust vectoring. By varying the speed or tilt of individual motors, the aircraft synthesises a controllable thrust vector without relying on heavy mechanical actuators or moving nozzles.
@@ -128,7 +138,7 @@
           </li>
 
         </ul>
-        <h5>Conclusion</h5>
+        <h5 id="conclusion">Conclusion</h5>
         <p>
           Over the span of 70 years, thrust vectoring has evolved from a theoretical concept to a critical part of modern aerospace engineering. From the pioneering V/STOL capabilities of the Harrier to the agility-enhancing nozzles of the F-22 Raptor, thrust vectoring has demonstrated its value in expanding flight envelopes and enhancing manoeuvrability. Although arguably being the two main examples of this being the Harrier and F-22, the technology is also used in other scenarios, from missles such as the AIM-9X Sidewinder, to space exploration vehicles like the SpaceX Falcon 9, which uses thrust vectoring for precise landing maneuvers.
           Looking ahead, distributed electric propulsion systems promise to further revolutionise thrust vectoring by enabling precise, responsive control through multiple independent thrust sources. As these technologies mature, they hold the potential to redefine aircraft performance, safety, and efficiency across both military and civilian domains.
@@ -208,17 +218,16 @@
       if (out) out.textContent = `Total word count: ${total}`;
     }
 
-    // For your use case, just hard-code the correct repo + file
     function loadGhSettings() {
       return {
         owner: "FEPSFY6953543",
         repo: "FEPSFY6953543",
-        path: "index.html",   // index.html is at the repo root on GitHub
-        branches: ["main"]    // main is your active branch
+        path: "index.html",   
+        branches: ["main"]   
       };
     }
 
-    // These functions are harmless even if you never add the settings UI
+    
     function renderGhSettings() {
       const s = loadGhSettings();
       const owner = document.getElementById("gh-owner"); if (owner) owner.value = s.owner;
