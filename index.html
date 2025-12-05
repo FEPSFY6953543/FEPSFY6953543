@@ -19,6 +19,10 @@
   <main class="content-shell">
     <section class="content">
 
+      <p><strong>ENG0018</strong></p>
+      <p><strong>Arthur Jacobs</strong></p>
+      <p><strong>URN:695343</strong></p>
+      
       <h1 class="page-title">Thrust Vectoring: What is it and how is it used?</h1>
       <nav class="toc" aria-label="Table of contents">
         <h2>Contents</h2>
@@ -197,6 +201,7 @@
     function getWordCountOf(sectionId) {
       const section = document.getElementById(sectionId);
       if (!section) return 0;
+
       const includePs = Array.from(section.querySelectorAll('p')).filter(p => {
         if (p.classList.contains('sources-panel')) return false;
         if (p.classList.contains('media-actions')) return false;
@@ -218,90 +223,32 @@
       if (out) out.textContent = `Total word count: ${total}`;
     }
 
-    function loadGhSettings() {
-      return {
-        owner: "FEPSFY6953543",
-        repo: "FEPSFY6953543",
-        path: "index.html",   
-        branches: ["main"]   
-      };
-    }
-
-    
-    function renderGhSettings() {
-      const s = loadGhSettings();
-      const owner = document.getElementById("gh-owner"); if (owner) owner.value = s.owner;
-      const repo = document.getElementById("gh-repo"); if (repo) repo.value = s.repo;
-      const path = document.getElementById("gh-path"); if (path) path.value = s.path;
-      const branches = document.getElementById("gh-branches"); if (branches) branches.value = s.branches.join(", ");
-    }
-
-    function saveGhSettings() {
-      const owner = (document.getElementById("gh-owner")?.value || "").trim();
-      const repo = (document.getElementById("gh-repo")?.value || "").trim();
-      const path = (document.getElementById("gh-path")?.value || "").trim();
-      const branchesStr = (document.getElementById("gh-branches")?.value || "").trim();
-      const branches = branchesStr
-        ? branchesStr.split(",").map(s => s.trim()).filter(Boolean)
-        : ["main"];
-      const settings = { owner, repo, path, branches };
-      localStorage.setItem("ghSettings", JSON.stringify(settings));
-      return settings;
-    }
-
-    function bindGhSettings() {
-      const btn = document.getElementById("save-gh-settings");
-      if (!btn) return;
-      btn.addEventListener("click", () => {
-        saveGhSettings();
-        const status = document.getElementById("last-updated");
-        if (status) status.textContent = "Settings saved. Click Verify to check last modified time.";
-      });
-    }
-
     async function getLastUpdatedTime() {
-      const { owner, repo, path, branches: branchesToTry } = loadGhSettings();
       const statusEl = document.getElementById("last-updated");
-      const headers = { "Accept": "application/vnd.github.v3+json" };
-
-      async function branchHasPath(branch) {
-        const contentsURL = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}?ref=${branch}`;
-        const r = await fetch(contentsURL, { headers });
-        if (r.status === 200) return true;
-        if (r.status === 404) return false;
-        return false;
-      }
-
-      async function latestCommitOnBranch(branch) {
-        const commitsURL = `https://api.github.com/repos/${owner}/${repo}/commits?path=${encodeURIComponent(path)}&sha=${branch}&per_page=1`;
-        const r = await fetch(commitsURL, { headers });
-        if (!r.ok) return null;
-        const data = await r.json();
-        if (Array.isArray(data) && data.length > 0) return data[0];
-        return null;
-      }
+      if (!statusEl) return;
 
       try {
-        for (const branch of branchesToTry) {
-          const exists = await branchHasPath(branch);
-          if (!exists) continue;
-          const commit = await latestCommitOnBranch(branch);
-          if (commit) {
-            const lastCommitDate = new Date(commit.commit.committer.date);
-            if (statusEl) {
-              statusEl.textContent = `Last Modified Time (branch: ${branch}): ${lastCommitDate.toLocaleString()}`;
-            }
-            return;
-          }
+        const response = await fetch(
+          "https://api.github.com/repos/FEPSFY6953543/FEPSFY6953543/commits?path=index.html&per_page=1",
+          { headers: { "Accept": "application/vnd.github.v3+json" } }
+        );
+
+        if (!response.ok) {
+          statusEl.textContent = "Could not load last modified time.";
+          return;
         }
-        if (statusEl) {
-          statusEl.textContent = "Could not find this file on any of the configured branches.";
+
+        const data = await response.json();
+        if (!Array.isArray(data) || data.length === 0) {
+          statusEl.textContent = "No commit information found.";
+          return;
         }
-      } catch (err) {
-        console.error(err);
-        if (statusEl) {
-          statusEl.textContent = "Error checking last modified time from GitHub.";
-        }
+
+        const commitDate = new Date(data[0].commit.committer.date);
+        statusEl.textContent = "Last modified on: " + commitDate.toLocaleString();
+      } catch (error) {
+        console.error(error);
+        statusEl.textContent = "Error loading last modified time.";
       }
     }
 
@@ -310,11 +257,8 @@
       button.setAttribute("aria-expanded", String(!expanded));
       if (expanded) {
         list.hidden = true;
-        list.classList.remove("is-visible");
       } else {
         list.hidden = false;
-        list.classList.remove("is-hidden");
-        requestAnimationFrame(() => list.classList.add("is-visible"));
       }
     }
 
@@ -332,20 +276,16 @@
       if (!btn) return;
       btn.addEventListener("click", async () => {
         const status = document.getElementById("last-updated");
-        if (status) status.textContent = "Verifying...";
+        if (status) status.textContent = "Checking...";
         await getLastUpdatedTime();
-        alert("Last modified time has been successfully verified from the GitHub API.");
+        alert("Last modified time has been checked.");
       });
     }
 
     window.addEventListener("DOMContentLoaded", () => {
-    
       bindSourceToggles();
-      renderGhSettings();
-      bindGhSettings();
       bindVerifyButton();
       updateTotalWordCount();
-      
       getLastUpdatedTime();
     });
   </script>
